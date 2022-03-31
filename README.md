@@ -4,9 +4,19 @@
 
 [Repository link](https://github.com/ucl-comp0035/comp0034_cw2_i-azhar-nurgaliyeva)
 
-## Explanation
+**requirements.txt** - contains all the package dependencies for the project.
 
-...
+**.gitignore file** - informs Git which files should be ignored when committing the project to the repository on GitHub.
+
+**setup.py** - description of the project and all the files that belong to it.
+
+**MANIFEST.in** - needed to include other files such as static and templates directories.
+
+## Flask app example with a basic structure
+
+A minimal app to demonstrate how to structure and configure a Flask app.
+
+## Explanation
 
 ## References
 
