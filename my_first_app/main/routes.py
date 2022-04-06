@@ -10,3 +10,13 @@ def index():
         name = current_user.first_name
         flash(f'Hello {name}. ')
     return render_template('index.html', title='Home page')
+
+@index_bp.route('/about')
+def about_info():
+    return render_template('about.html', title='About visualisations')
+
+@index_bp.route('/references')
+def references():
+    return render_template('references.html', title='References')
+
+

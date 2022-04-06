@@ -9,11 +9,13 @@
 
     <form method="POST" action="{{ url_for('auth_bp.signup') }}">
         {{ form.csrf_token }}
-        {{ form.first_name.label }} {{ form.first_name() }} <br>
-        {{ form.last_name.label }} {{ form.last_name() }} <br>
-        {{ form.email.label }} {{ form.email() }} <br>
-        {{ form.password.label }} {{ form.password() }} <br>
-        {{ form.password_repeat.label }} {{ form.password_repeat() }} <br>
+        <p></p>
+        <h3>Signup</h3>
+        <p>{{ form.first_name.label }} {{ form.first_name() }}</p>
+        <p>{{ form.last_name.label }} {{ form.last_name() }}</p>
+        <p>{{ form.email.label }} {{ form.email() }}</p>
+        <p>{{ form.password.label }} {{ form.password() }}</p>
+        <p>{{ form.password_repeat.label }} {{ form.password_repeat() }}</p>
         <input type="submit" value="Sign up">
     </form>
 {% endblock %}
