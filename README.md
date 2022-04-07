@@ -10,6 +10,8 @@
 
 **MANIFEST.in** - needed to include other files such as static and templates directories.
 
+Data used for the Dash app is provided by Transport for London (TfL) and can be accessed from here: [1].
+
 ## Flask app
 
 This Flask app demonstrates the following features:
@@ -24,8 +26,8 @@ Additional features of the Flask app include:
 
 - Transport related stories using a third party API (Google News API) to provide content on the home page.
 - Contact us form in the "more" dropdown of the navigation bar. This form allows all users to leave feedback or contact
-  us. The message and details are stored in the "messages" table of the database.
-- Sending emails/password reset?
+  us. The message and details are stored in the "messages" table of the database. [2][3]
+- Sending emails/password reset? [4][5]
 
 ## Pylint reports
 
