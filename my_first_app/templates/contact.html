@@ -7,14 +7,13 @@
         </div>
     {% endfor %}
 
-    <form method="POST" action="{{ url_for('auth_bp.login') }}">
+    <form method="POST" action="{{ url_for('auth_bp.contact_us') }}">
         {{ form.csrf_token }}
         <p></p>
-        <h3>Login</h3>
-        <p>Please log in below using the form:</p>
+        <h3>{{ title }}</h3>
+        <p>{{ form.full_name.label }} {{ form.full_name() }}</p>
         <p>{{ form.email.label }} {{ form.email() }}</p>
-        <p>{{ form.password.label }} {{ form.password() }}</p>
-        <p>{{ form.remember.label }} {{ form.remember() }}</p>
-        <input type="submit" value="Login">
+        <p>{{ form.message.label }} {{ form.message() }}</p>
+        <input type="submit" value="Submit">
     </form>
 {% endblock %}

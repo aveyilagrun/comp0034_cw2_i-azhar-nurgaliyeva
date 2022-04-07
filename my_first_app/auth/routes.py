@@ -5,8 +5,8 @@ from flask_login import login_user, logout_user, login_required
 from datetime import timedelta
 
 from my_first_app import db
-from my_first_app.auth.forms import SignupForm, LoginForm
-from my_first_app.models import User
+from my_first_app.auth.forms import SignupForm, LoginForm, ContactForm
+from my_first_app.models import User, Messages
 from my_first_app import login_manager
 
 auth_bp = Blueprint('auth_bp', __name__)
@@ -84,3 +84,21 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index_bp.index'))
+
+
+@auth_bp.route('/contact', methods=['GET', 'POST'])
+def contact_us():
+    contact_form = ContactForm(request.form)
+    if contact_form.validate_on_submit():
+        user_request = Messages(full_name=contact_form.full_name.data, email=contact_form.email.data,
+                                message=contact_form.message.data)
+        try:
+            db.session.add(user_request)
+            db.session.commit()
+            flash(f"Thank you, {user_request.full_name}. Your message is received. Reference number: {user_request.id}")
+        except IntegrityError:
+            db.session.rollback()
+            flash(f'Error, unable to register request for {contact_form.email.data}. ', 'error')
+            return redirect(url_for('auth_bp.contact_us'))
+        return redirect(url_for('index_bp.index'))
+    return render_template('contact.html', title='Contact Us', form=contact_form)

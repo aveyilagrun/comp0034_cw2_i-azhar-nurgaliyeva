@@ -10,7 +10,8 @@
     <form method="POST" action="{{ url_for('auth_bp.signup') }}">
         {{ form.csrf_token }}
         <p></p>
-        <h3>Signup</h3>
+        <h3>Sign up</h3>
+        <p>Please sign up below using the form:</p>
         <p>{{ form.first_name.label }} {{ form.first_name() }}</p>
         <p>{{ form.last_name.label }} {{ form.last_name() }}</p>
         <p>{{ form.email.label }} {{ form.email() }}</p>

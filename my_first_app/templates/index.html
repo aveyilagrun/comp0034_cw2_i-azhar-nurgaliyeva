@@ -2,5 +2,23 @@
 {% block content %}
     <p></p>
     <h3>{{ title }}</h3>
-    <p>This is the home page of the web application.</p>
+    <p>This is the home page of the web application. Dashboards are available only for logged in users.</p>
+    <h3>Latest transport news</h3>
+    {% for article in news['articles'] %}
+        <p>
+            <div style="float:left; padding:10px">
+                    <img src={{ article.urlToImage|e }} width=230" height="130">
+            </div>
+            <p>
+                <a href="{{ article.url|e }}">{{ article.title|e }}</a>
+            </p>
+            <p>
+                <div>Author: {{ article.author|e }}</div>
+            </p>
+            <p>
+                <div>{{ article.description|e }}</div>
+            </p>
+        </p>
+        <br>
+    {% endfor %}
 {% endblock %}

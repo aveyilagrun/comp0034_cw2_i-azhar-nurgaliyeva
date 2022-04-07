@@ -19,3 +19,14 @@ class User(db.Model, UserMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+
+class Messages(db.Model):
+    __tablename__ = "messages"
+    id = db.Column(db.Integer, primary_key=True)
+    full_name = db.Column(db.Text, nullable=False)
+    email = db.Column(db.Text, nullable=False)
+    message = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return f"{self.id} {self.full_name} {self.email} {self.message}"

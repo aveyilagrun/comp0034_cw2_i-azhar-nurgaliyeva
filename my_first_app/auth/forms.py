@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, EmailField, BooleanField
-from wtforms.validators import DataRequired, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, EmailField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, EqualTo, ValidationError, Email
 
 from my_first_app.models import User
 
@@ -35,3 +35,10 @@ class LoginForm(FlaskForm):
             check = person.check_password(password.data)
             if check == False:
                 raise ValidationError('Wrong password!')
+
+
+class ContactForm(FlaskForm):
+    full_name = StringField(label='Your full name', validators=[DataRequired()])
+    email = EmailField(label='Email address', validators=[DataRequired()])
+    message = StringField(label='Message')
+    submit = SubmitField(label="Submit")
