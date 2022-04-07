@@ -1,6 +1,4 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7195250&assignment_repo_type=AssignmentRepo)
-
-# Coursework 2
+# Coursework 2 for COMP0034
 
 [Repository link](https://github.com/ucl-comp0035/comp0034_cw2_i-azhar-nurgaliyeva)
 
@@ -17,6 +15,55 @@
 A minimal app to demonstrate how to structure and configure a Flask app.
 
 ## Explanation
+
+## Pylint reports
+
+**my_first_app.app.py**:
+
+Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
+
+**my_first_app.auth.forms**: 
+
+Your code has been rated at 4.24/10 (previous run: 2.73/10, +1.52)
+
+![auth_forms](my_first_app/pylint_reports/auth_forms.png)
+
+**my_first_app.auth.routes**:
+
+Your code has been rated at 8.22/10 (previous run: 7.12/10, +1.10)
+
+![auth_routes](my_first_app/pylint_reports/auth_routes.png)
+
+**my_first_app.main.routes**:
+
+Your code has been rated at 5.00/10 (previous run: 3.18/10, +1.82)
+
+![main_routes](my_first_app/pylint_reports/main_routes.png)
+
+**my_first_app.my_dash_app.callbacks**:
+
+Your code has been rated at 8.00/10 (previous run: 7.17/10, +0.83)
+
+![callbacks](my_first_app/pylint_reports/callbacks.png)
+
+**my_first_app.my_dash_app.layout**:
+
+Your code has been rated at 8.28/10 (previous run: 7.93/10, +0.34)
+
+![layout](my_first_app/pylint_reports/layout.png)
+
+**my_first_app.config**:
+
+Your code has been rated at 7.06/10 (previous run: 4.71/10, +2.35)
+
+![config](my_first_app/pylint_reports/config.png)
+
+**my_first_app.models**:
+
+Your code has been rated at 7.50/10 (previous run: 6.67/10, +0.83)
+
+![models](my_first_app/pylint_reports/models.png)
+
 
 ## References
 

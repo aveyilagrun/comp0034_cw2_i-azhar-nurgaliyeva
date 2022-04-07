@@ -1,3 +1,5 @@
+""" Routes for Flask App """
+
 from datetime import datetime, timedelta
 import requests
 from flask import Blueprint, render_template, flash
@@ -8,6 +10,7 @@ index_bp = Blueprint('index_bp', __name__, url_prefix='/')
 
 @index_bp.route('/')
 def index():
+    """ Returns home page section of the web app """
     if not current_user.is_anonymous:
         name = current_user.first_name
         flash(f'Hello {name}. ')
@@ -31,9 +34,11 @@ def index():
 
 @index_bp.route('/about')
 def about_info():
+    """ Returns about visualisations section of the web app """
     return render_template('about.html', title='About visualisations')
 
 
 @index_bp.route('/references')
 def references():
+    """ Returns references section of the web app """
     return render_template('references.html', title='References')

@@ -1,8 +1,10 @@
-import json
+""" Callbacks for the Dash App """
+
 from dash import Output, Input
 import pandas as pd
 import plotly.express as px
-from my_first_app.my_dash_app.layout import df, line_fig, line_graph_tab, bar_graph_tab, pie_chart_tab, subplots_tab, \
+from my_first_app.my_dash_app.layout import df, line_fig, \
+    line_graph_tab, bar_graph_tab, pie_chart_tab, subplots_tab, \
     box_plots_tab
 
 
@@ -89,8 +91,9 @@ def register_callbacks(dash_app):
             filtered_timeline = filtered_timeline.append(
                 df[df['Period ending'].astype(str).str.contains(f'{selected_year[0]}') == True])
         pie_df_new = filtered_timeline[
-            ['Bus journeys (m)', 'Underground journeys (m)', 'DLR journeys (m)', 'Tram journeys (m)',
-             'Overground journeys (m)', 'Emirates Airline journeys (m)', 'TfL Rail journeys (m)']].sum()
+            ['Bus journeys (m)', 'Underground journeys (m)', 'DLR journeys (m)',
+             'Tram journeys (m)','Overground journeys (m)', 'Emirates Airline journeys (m)',
+             'TfL Rail journeys (m)']].sum()
         pie_fig_new = px.pie(values=pie_df_new.values, names=pie_df_new.index,
                              title="Amount of journeys in a year")
         return pie_fig_new

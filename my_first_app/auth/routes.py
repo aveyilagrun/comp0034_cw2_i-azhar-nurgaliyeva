@@ -1,3 +1,5 @@
+""" Routes for the Flask App """
+
 from flask import Blueprint, render_template, flash, redirect, url_for, request, abort
 from sqlalchemy.exc import IntegrityError
 from urllib.parse import urlparse, urljoin
@@ -21,12 +23,14 @@ def load_user(user_id):
 
 
 def is_safe_url(target):
+    """ Makes sure that target url is safe """
     host_url = urlparse(request.host_url)
     redirect_url = urlparse(urljoin(request.host_url, target))
     return redirect_url.scheme in ('http', 'https') and host_url.netloc == redirect_url.netloc
 
 
 def get_safe_redirect():
+    """ Makes sure that there is a safe redirect """
     url = request.args.get('next')
     if url and is_safe_url(url):
         return url
@@ -45,14 +49,18 @@ def unauthorized():
 
 @auth_bp.route('/auth')
 def index():
+    """ Returns authentication section of the web app """
     return "This is the authentication section of the web app"
 
 
 @auth_bp.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """ Returns sign up section for the user """
     form = SignupForm(request.form)
     if form.validate_on_submit():
-        user = User(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data)
+        user = User(first_name=form.first_name.data,
+                    last_name=form.last_name.data,
+                    email=form.email.data)
         user.set_password(form.password.data)
         try:
             db.session.add(user)
@@ -68,6 +76,7 @@ def signup():
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    """ Returns log in section of the web app """
     login_form = LoginForm()
     if login_form.validate_on_submit():
         user = User.query.filter_by(email=login_form.email.data).first()
@@ -82,23 +91,28 @@ def login():
 @auth_bp.route('/logout')
 @login_required
 def logout():
+    """ Log out function """
     logout_user()
     return redirect(url_for('index_bp.index'))
 
 
 @auth_bp.route('/contact', methods=['GET', 'POST'])
 def contact_us():
+    """ Returns contact us section of the web app """
     contact_form = ContactForm(request.form)
     if contact_form.validate_on_submit():
-        user_request = Messages(full_name=contact_form.full_name.data, email=contact_form.email.data,
+        user_request = Messages(full_name=contact_form.full_name.data,
+                                email=contact_form.email.data,
                                 message=contact_form.message.data)
         try:
             db.session.add(user_request)
             db.session.commit()
-            flash(f"Thank you, {user_request.full_name}. Your message is received. Reference number: {user_request.id}")
+            flash(f"Thank you, {user_request.full_name}. Your message is received. "
+                  f"Reference number: {user_request.id}")
         except IntegrityError:
             db.session.rollback()
-            flash(f'Error, unable to register request for {contact_form.email.data}. ', 'error')
+            flash(f'Error, unable to register request for {contact_form.email.data}. ',
+                  'error')
             return redirect(url_for('auth_bp.contact_us'))
         return redirect(url_for('index_bp.index'))
     return render_template('contact.html', title='Contact Us', form=contact_form)
