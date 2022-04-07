@@ -10,11 +10,22 @@
 
 **MANIFEST.in** - needed to include other files such as static and templates directories.
 
-## Flask app example with a basic structure
+## Flask app
 
-A minimal app to demonstrate how to structure and configure a Flask app.
+This Flask app demonstrates the following features:
 
-## Explanation
+- Responsive design, which is achieved using Bootstrap library.
+- Dash app is launched as one of the routes in the web app.
+- There is signup/login/logout and restriction of access to the Dash App to not logged-in users.
+- The data entered by users (login details, feedback messages) are captured and stored in the database.
+- Stored users' data is used for login purposes in a SQLite database, and can be accessed there.
+
+Additional features of the Flask app include:
+
+- Transport related stories using a third party API (Google News API) to provide content on the home page.
+- Contact us form in the "more" dropdown of the navigation bar. This form allows all users to leave feedback or contact
+  us. The message and details are stored in the "messages" table of the database.
+- Sending emails/password reset?
 
 ## Pylint reports
 
@@ -22,7 +33,7 @@ A minimal app to demonstrate how to structure and configure a Flask app.
 
 Your code has been rated at 10.00/10 (previous run: 10.00/10, +0.00)
 
-**my_first_app.auth.forms**: 
+**my_first_app.auth.forms**:
 
 Your code has been rated at 4.24/10 (previous run: 2.73/10, +1.52)
 
@@ -64,7 +75,19 @@ Your code has been rated at 7.50/10 (previous run: 6.67/10, +0.83)
 
 ![models](my_first_app/pylint_reports/models.png)
 
-
 ## References
 
-[1] ...
+[1] Transport for London (TfL), “Public Transport Journeys by Type of Transport – London Datastore.” Available
+at: https://data.london.gov.uk/dataset/public-transport-journeys-type-transport
+
+[2] “Create Contact Us using WTForms in Flask,” GeeksforGeeks, Jul. 17, 2021.
+https://www.geeksforgeeks.org/create-contact-us-using-wtforms-in-flask/ (accessed Apr. 07, 2022).
+
+[3] “How To Use Web Forms in a Flask Application | DigitalOcean,” www.digitalocean.com.
+https://www.digitalocean.com/community/tutorials/how-to-use-web-forms-in-a-flask-application
+
+[4] “Sending Emails with Flask - Step-by-Step Flask-Mail Guide | Mailtrap Blog,” mailtrap.io.
+https://mailtrap.io/blog/flask-email-sending/
+
+[5] “Send an E-mail with Python Flask - Python Tutorial,” pythonbasics.org.
+https://pythonbasics.org/flask-mail/#:~:text=Flask%20doesn (accessed Apr. 07, 2022).
