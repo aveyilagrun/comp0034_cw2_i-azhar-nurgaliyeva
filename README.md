@@ -6,6 +6,8 @@
 
 **.gitignore file** - informs Git which files should be ignored when committing the project to the repository on GitHub.
 
+**app.py** - run to see the output at http://127.0.0.1:5000/.
+
 **setup.py** - description of the project and all the files that belong to it.
 
 **MANIFEST.in** - needed to include other files such as static and templates directories.
@@ -27,7 +29,7 @@ Additional features of the Flask app include:
 - Transport related stories using a third party API (Google News API) to provide content on the home page.
 - Contact us form in the "more" dropdown of the navigation bar. This form allows all users to leave feedback or contact
   us. The message and details are stored in the "messages" table of the database. [2][3]
-- Sending emails/password reset? [4][5]
+- Sending email to the user after they use "Contact us" form with the copy of their message. [4][5]
 
 ## Pylint reports
 
@@ -76,6 +78,9 @@ Your code has been rated at 7.06/10 (previous run: 4.71/10, +2.35)
 Your code has been rated at 7.50/10 (previous run: 6.67/10, +0.83)
 
 ![models](my_first_app/pylint_reports/models.png)
+
+Most of the unresolved errors related to code quality are connected to the import error. I tried to find a solution for 
+it, but did not find anything reliable. It is documented in GitHub issues as unresolved.
 
 ## References
 
