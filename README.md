@@ -6,7 +6,7 @@
 
 **.gitignore file** - informs Git which files should be ignored when committing the project to the repository on GitHub.
 
-**app.py** - run to see the output at http://127.0.0.1:5000/.
+**app.py** (in my_first_app) - run to see the output at http://127.0.0.1:5000/.
 
 **setup.py** - description of the project and all the files that belong to it.
 
@@ -79,7 +79,7 @@ Your code has been rated at 7.50/10 (previous run: 6.67/10, +0.83)
 
 ![models](my_first_app/pylint_reports/models.png)
 
-Most of the unresolved errors related to code quality are connected to the import error. I tried to find a solution for 
+Most of the unresolved errors related to code quality are connected to the import error. I tried to find a solution for
 it, but did not find anything reliable. It is documented in GitHub issues as unresolved.
 
 ## References
