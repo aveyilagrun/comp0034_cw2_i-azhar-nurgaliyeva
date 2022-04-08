@@ -1,6 +1,5 @@
 import dash
 import dash_bootstrap_components as dbc
-import pandas as pd
 from flask import Flask
 from flask.helpers import get_root_path
 from flask_wtf.csrf import CSRFProtect
@@ -40,6 +39,7 @@ def create_app(config_class_name):
     app.register_blueprint(index_bp)
 
     return app
+
 
 def register_dashapp(app):
     """ Registers the Dash app in the Flask app and make it accessible on the route /dashboard/ """

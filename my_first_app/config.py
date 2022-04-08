@@ -22,6 +22,12 @@ class DevelopmentConfig(Config):
     DATA_PATH = Path('data')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(DATA_PATH.joinpath('example.sqlite'))
     SQLALCHEMY_ECHO = True
+    MAIL_SERVER = 'smtp.mail.yahoo.com'
+    MAIL_PORT = 587
+    MAIL_USERNAME = 'azharnurgaliyeva@yahoo.com'
+    MAIL_PASSWORD = 'plvfojhklclmtzmv'
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
 
 
 class TestingConfig(Config):

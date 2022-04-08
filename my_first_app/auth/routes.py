@@ -5,11 +5,11 @@ from sqlalchemy.exc import IntegrityError
 from urllib.parse import urlparse, urljoin
 from flask_login import login_user, logout_user, login_required
 from datetime import timedelta
+from flask_mail import Message
 
-from my_first_app import db
+from my_first_app import db, login_manager
 from my_first_app.auth.forms import SignupForm, LoginForm, ContactForm
 from my_first_app.models import User, Messages
-from my_first_app import login_manager
 
 auth_bp = Blueprint('auth_bp', __name__)
 
@@ -99,6 +99,7 @@ def logout():
 @auth_bp.route('/contact', methods=['GET', 'POST'])
 def contact_us():
     """ Returns contact us section of the web app """
+    from my_first_app.app import mail
     contact_form = ContactForm(request.form)
     if contact_form.validate_on_submit():
         user_request = Messages(full_name=contact_form.full_name.data,
@@ -109,6 +110,13 @@ def contact_us():
             db.session.commit()
             flash(f"Thank you, {user_request.full_name}. Your message is received. "
                   f"Reference number: {user_request.id}")
+            text = Message('Request is registered!',
+                           sender='azharnurgaliyeva@yahoo.com',
+                           recipients=[contact_form.email.data])
+            text.body = f'''Thank you for your message! If you did not make this request then simply 
+            ignore this email or contact us to remove this record. Here is the copy of it: 
+            "{contact_form.message.data}". '''
+            mail.send(text)
         except IntegrityError:
             db.session.rollback()
             flash(f'Error, unable to register request for {contact_form.email.data}. ',
